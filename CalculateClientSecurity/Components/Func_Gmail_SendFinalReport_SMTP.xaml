@@ -1,0 +1,123 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Func_Gmail_SendFinalReport_SMTP" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(njl:JObject)" />
+    <x:Property Name="in_dtQueueData" Type="InArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1208,923</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Func_Gmail_SendFinalReport_SMTP_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="35">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="31">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Func_Gmail_SendFinalReport_SMTP" sap:VirtualizedContainerService.HintSize="381,858" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="HtmlBody" />
+      <Variable x:TypeArguments="ss:SecureString" Name="emailPassword" />
+      <Variable x:TypeArguments="x:String" Name="emailUserName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="339,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started_Func_Gmail_SendFinalReport_SMTP&quot;]" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="out_HtmlMailBody = &quot;&lt;table border=1&gt;&quot;;&#xA;out_HtmlMailBody = out_HtmlMailBody + &quot;&lt;tr bgcolor='#FF0000'&gt;&quot; + &quot;&lt;td&gt;WIID&lt;/td&gt;&quot; + &quot;&lt;td&gt;Description&lt;/td&gt;&quot; + &quot;&lt;td&gt;Type&lt;/td&gt;&quot; + &quot;&lt;td&gt;Date&lt;/td&gt;&quot; + &quot;&lt;td&gt;ClientInformation&lt;/td&gt;&quot; + &quot;&lt;td&gt;Hashkey&lt;/td&gt;&quot;+  &quot;&lt;td&gt;Status&lt;/td&gt;&quot;+ &quot;&lt;td&gt;Reason&lt;/td&gt;&quot;;&#xA;foreach(DataRow row in in_dtOutputTable.Rows)&#xA;{&#xA;&#x9;out_HtmlMailBody = out_HtmlMailBody +&quot;&lt;tr&gt;&quot;;&#xA;&#x9;out_HtmlMailBody = out_HtmlMailBody +&quot;&lt;td&gt;&quot;+row[&quot;WIID&quot;].ToString()+&quot;&lt;/td&gt;&quot;;&#xA;&#x9;out_HtmlMailBody = out_HtmlMailBody +&quot;&lt;td&gt;&quot;+row[&quot;Description&quot;].ToString()+&quot;&lt;/td&gt;&quot;;&#xA;&#x9;out_HtmlMailBody = out_HtmlMailBody +&quot;&lt;td&gt;&quot;+row[&quot;Type&quot;].ToString()+&quot;&lt;/td&gt;&quot;;&#xA;&#x9;out_HtmlMailBody = out_HtmlMailBody +&quot;&lt;td&gt;&quot;+row[&quot;Date&quot;].ToString()+&quot;&lt;/td&gt;&quot;;&#xA;&#x9;out_HtmlMailBody = out_HtmlMailBody +&quot;&lt;td&gt;&quot;+row[&quot;ClientInformation&quot;].ToString()+&quot;&lt;/td&gt;&quot;;&#xA;&#x9;out_HtmlMailBody = out_HtmlMailBody +&quot;&lt;td&gt;&quot;+row[&quot;Hashkey&quot;].ToString()+&quot;&lt;/td&gt;&quot;;&#xA;&#x9;out_HtmlMailBody = out_HtmlMailBody +&quot;&lt;td&gt;&quot;+row[&quot;Status&quot;].ToString()+&quot;&lt;/td&gt;&quot;;&#xA;&#x9;out_HtmlMailBody = out_HtmlMailBody +&quot;&lt;td&gt;&quot;+row[&quot;Reason&quot;].ToString()+&quot;&lt;/td&gt;&quot;;&#xA;&#x9;out_HtmlMailBody = out_HtmlMailBody +&quot;&lt;/tr&gt;&quot;;&#xA;}&#xA;out_HtmlMailBody = out_HtmlMailBody + &quot;&lt;/table&gt;&quot;;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="339,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+      <ui:InvokeCode.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_HtmlMailBody">[HtmlBody]</OutArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtOutputTable">[in_dtQueueData]</InArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Func_GetAPPCredentials workflow" sap:VirtualizedContainerService.HintSize="339,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Components\Func_GetAPPCredentials.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_AssetName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;E5GmailAccount&quot;).ToString" />
+        </InArgument>
+        <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_Password">
+          <mva:VisualBasicReference x:TypeArguments="ss:SecureString" ExpressionText="emailPassword" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_UserName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailUserName" />
+        </OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Hello,&lt;br/&gt;&lt;br/&gt; Please find the execution status below:&quot;+HtmlBody+&quot;&lt;br/&gt;&lt;br/&gt;Regards&lt;br/&gt;E5Bot&quot;]" DisplayName="Send SMTP Mail Message" Email="[emailUserName]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="339,148" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="True" Port="[Convert.ToInt32(in_Config(&quot;SMTPPort&quot;).ToString)]" SecureConnection="Auto" SecurePassword="[emailPassword]" Server="[in_Config(&quot;SMTPHost&quot;).ToString]" Subject="Execution Report - Calculate Client Security Hash" To="[in_Config(&quot;EmailAddress&quot;).ToString]">
+      <ui:SendMail.Files>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+      </ui:SendMail.Files>
+    </ui:SendMail>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="339,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Ended_Func_Gmail_SendFinalReport_SMTP&quot;]" />
+  </Sequence>
+</Activity>

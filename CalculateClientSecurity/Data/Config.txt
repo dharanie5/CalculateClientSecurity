@@ -1,0 +1,12 @@
+{
+	"OrchestratorQueueName":"Calculate_Client_Security",
+	"ACMEUrl":"https://acme-test.uipath.com/",
+	"ACMEWorkItems":"https://acme-test.uipath.com/work-items/",
+	"SHA1Url":"http://www.sha1-online.com/",
+	"SMTPHost":"smtp.gmail.com",
+	"SMTPPort":"465",
+	"E5GmailAccount":"E5GmailAccount",
+	"EmailAddress":"dharani.ravindranathtagore@e5.ai",
+	"ACMECredentails":"ACMECredentails"
+
+}
