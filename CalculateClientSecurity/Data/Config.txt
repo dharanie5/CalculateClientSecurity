@@ -7,6 +7,9 @@
 	"SMTPPort":"465",
 	"E5GmailAccount":"E5GmailAccount",
 	"EmailAddress":"dharani.ravindranathtagore@e5.ai",
-	"ACMECredentails":"ACMECredentails"
+	"ACMECredentails":"ACMECredentails",
+	"HubURL":"https://api-dev.e5.ai/",
+	"HubCredentails":"AutomationHub_Credentials",
+	"HubProcessName":"Calculate Client Security Hash"
 
 }
